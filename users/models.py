@@ -49,7 +49,7 @@ class User(AbstractBaseUser):
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True, related_name="user_profile")
     bio = models.TextField(max_length=500, blank=True)
-    profile_img = models.CharField(max_length=255, null=True, blank=True)
+    profile_img = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return str(f"{self.user} / {self.bio}")
