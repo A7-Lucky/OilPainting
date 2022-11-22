@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from users.models import Profile, User
+from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -34,17 +34,12 @@ class TokenObtainPairSerializer:
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
-
-    def get_user(self, obj):
-        return obj.user.username
-
     class Meta:
-        model = Profile
-        fields = "__all__"
+        model = User
+        fields = ("username", "bio", "profile_img")
 
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Profile
+        model = User
         fields = ("bio", "profile_img")

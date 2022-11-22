@@ -22,6 +22,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     username = models.CharField(verbose_name="username", max_length=255, unique=True)
+    profile_img = models.CharField(max_length=255, blank=True)
+    bio = models.TextField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -44,12 +46,3 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
-
-
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True, related_name="user_profile")
-    bio = models.TextField(max_length=500, blank=True)
-    profile_img = models.CharField(max_length=255, blank=True)
-
-    def __str__(self):
-        return str(f"{self.user} / {self.bio}")
