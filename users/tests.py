@@ -4,7 +4,6 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from .models import User
 
-
 # class SignUptest(APITestCase):
 #     def test_registrtaion(self):
 #         url = reverse("user_view")
@@ -14,6 +13,7 @@ from .models import User
 #         }
 #         response = self.client.post(url, user_data)
 #         self.assertEqual(response.status_code, 200)
+
 
 
 class LoginTest(APITestCase):
