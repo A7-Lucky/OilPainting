@@ -27,7 +27,7 @@ def inference(input, style):
     
     # 생성시간을 이름으로 저장
     time = datetime.now().strftime("%y%m%d-%H_%M_%s")
-    cv2.imwrite(f"output/{time}.jpeg", output) 
-    result = f"output/{time}.jpeg"
+    cv2.imwrite(f"media/{time}.jpeg", output) 
+    result = f"media/{time}.jpeg"
 
     return result
