@@ -46,3 +46,13 @@ class BookmarkView(APIView):
         else:
             article.bookmarks.add(request.user)
             return Response("북마크 등록", status=status.HTTP_200_OK)
+
+        
+# 나의 북마크 리스트
+class MybookmarkView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    def get(self, request):
+        user = request.user
+        bookmarks = user.article_bookmarks.all()
+        serializer = ArticleSerializer(bookmarks, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
