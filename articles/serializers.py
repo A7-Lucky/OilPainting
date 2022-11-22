@@ -31,3 +31,22 @@ class ArticleCreateSerializer(serializers.ModelSerializer):
             "content",
             "image",
         )
+
+
+# 댓글 조회
+class CommentSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+
+    def get_user(self, obj):
+        return obj.user.username
+
+    class Meta:
+        model = Comment
+        fields = "__all__"
+
+
+# 댓글 생성
+class CommentCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ("comment",)
