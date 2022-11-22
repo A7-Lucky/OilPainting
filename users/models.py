@@ -10,7 +10,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Users must have an username')
 
         user = self.model(
-            username=self.normalize_username(username),
+            username=username,
         )
 
         user.set_password(password)
@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    username = models.usernameField(
+    username = models.CharField(
         verbose_name='username address',
         max_length=255,
         unique=True,
