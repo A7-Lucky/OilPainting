@@ -3,9 +3,10 @@ import cv2
 import numpy as np
 
 
-def inference(input, style):
+def inference(filestr, style):
     # 이미지 불러오기
-    input_img = cv2.imread(input)
+    npimg = np.fromstring(filestr, np.uint8)
+    input_img = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
     style = cv2.dnn.readNetFromTorch(f"articles/models/{style}")
     
     # 전처리 코드
@@ -26,7 +27,7 @@ def inference(input, style):
     output = output.astype("uint8")
     
     # 생성시간을 이름으로 저장
-    time = datetime.now().strftime("%y%m%d-%H_%M_%s")
+    time = datetime.now().strftime("%y%m%d%H%M%S")
     cv2.imwrite(f"media/{time}.jpeg", output) 
     result = f"media/{time}.jpeg"
 

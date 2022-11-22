@@ -14,29 +14,31 @@ class ArticleView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
    
     def post(self, request):
-        data = request.data 
+        data = request.data  
+        style_info = Style.objects.get(category=request.data["style"])
         output_img = inference(
-                input=request.FILES["input"].read(),
+                filestr=request.FILES["input"].read(),
                 style=request.data.get("style", "") 
             )
+        image_info = Image.objects.create(style=style_info, output_img=output_img)
+        image_info.save()
+
         data = {
-            "user" : request.user.username,
+            "user" : request.user.id,
+            # "style" : style_info,
             "image" : output_img,
             "title" : request.data["title"],
             "content" : request.data["content"]
         }
-        
-        image_info = Image.objects.create(output_img=output_img)
-        image_info.save()
 
-        serializer = ArticleSerializer(data=data)
+        article_serializer = ArticleSerializer(data=data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
+        if article_serializer.is_valid():
+            article_serializer.save()
+            return Response(article_serializer.data, status=status.HTTP_200_OK)
         
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(article_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class ArticleDetailView(APIView):
     def get(self, request, article_id):

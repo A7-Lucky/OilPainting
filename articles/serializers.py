@@ -8,6 +8,10 @@ class StyleSerializer(serializers.ModelSerializer):
         
         
 class ImageSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+    
+    def get_user(self, obj):
+        return obj.user.username    
     class Meta:
         model = Image
         fields = "__all__" 

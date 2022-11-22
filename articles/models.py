@@ -11,6 +11,7 @@ class Style(models.Model):
 
 
 class Image(models.Model):
+    style = models.ForeignKey(Style, verbose_name="스타일", on_delete=models.SET_NULL, null=True)
     output_img = models.ImageField("결과사진", upload_to="media/", null=True)
     
     def __str__(self):
