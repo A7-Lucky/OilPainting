@@ -1,12 +1,21 @@
-from rest_framework import status
+from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from users.serializers import ProfileSerializer
+from users.models import Profile
+from users.serializers import ProfileSerializer, ProfileUpdateSerializer
 
 # Create your views here.
 class ProfileView(APIView):
     def get(self, request):
         user = request.user
-        profile = user.user_profile.all()
-        serializer = ProfileSerializer(profile, many=True)
+        profile = user.user_profile.first()
+        serializer = ProfileSerializer(profile)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        user = request.user
+        profile = user.user_profile.first()
+        serializer = ProfileUpdateSerializer(profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
