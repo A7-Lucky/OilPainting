@@ -11,7 +11,7 @@ class Style(models.Model):
 
 
 class Image(models.Model):
-    output_img = models.ImageField("결과사진", upload_to="output/", null=True)
+    output_img = models.ImageField("결과사진", upload_to="media/", null=True)
     
     def __str__(self):
         return self.output_img
