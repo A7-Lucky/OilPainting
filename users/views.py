@@ -5,7 +5,7 @@ from users.models import User
 from users.serializers import ProfileSerializer, ProfileUpdateSerializer, UserSerializer
 
 
-# 테스트용 회원가입 View
+# 회원가입(테스트용)
 class UserView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -16,11 +16,11 @@ class UserView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# 프로필 조회/수정
 class ProfileView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        # .all() 사용 시 모든 유저 데이터를 받게되므로 .get() 형태로 사용
         profile = User.objects.get(id=request.user.id)
         serializer = ProfileSerializer(profile)
         return Response(serializer.data, status=status.HTTP_200_OK)

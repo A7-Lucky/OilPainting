@@ -6,23 +6,23 @@ from articles.models import Article, Comment
 from articles.serializers import ArticleSerializer, ArticleCreateSerializer, CommentSerializer, CommentCreateSerializer
 
 
-# 아티클 조회/등록 (임시)
-# class ArticleView(APIView):
-#     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+# 아티클 조회/등록(테스트용)
+class ArticleView(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-#     def get(self, request):
-#         articles = Article.objects.all().order_by("-pk")
-#         serializer = ArticleSerializer(articles, many=True)
-#         return Response(serializer.data, status=status.HTTP_200_OK)
+    def get(self, request):
+        articles = Article.objects.all().order_by("-pk")
+        serializer = ArticleSerializer(articles, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-#     def post(self, request):
-#         serializer = ArticleCreateSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save(user=request.user)
-#             return Response(serializer.data, status=status.HTTP_200_OK)
-#         else:
-#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+    def post(self, request):
+        serializer = ArticleCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 # 댓글 조회/등록
 class CommentView(APIView):
@@ -33,7 +33,7 @@ class CommentView(APIView):
         comments = article.comment_article.all().order_by("-pk")
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
     def post(self, request, article_id):
         serializer = CommentCreateSerializer(data=request.data)
         if serializer.is_valid():
@@ -42,7 +42,7 @@ class CommentView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        
+
 # 댓글 수정/삭제
 class CommentDetailView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -64,7 +64,7 @@ class CommentDetailView(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         else:
             return Response("권한이 없습니다!", status=status.HTTP_403_FORBIDDEN)
-        
+
 
 # 좋아요 등록/취소
 class LikeView(APIView):
@@ -76,7 +76,7 @@ class LikeView(APIView):
         else:
             article.likes.add(request.user)
             return Response("좋아요!", status=status.HTTP_200_OK)
-        
+
 
 # 북마크 등록/취소
 class BookmarkView(APIView):
@@ -89,10 +89,11 @@ class BookmarkView(APIView):
             article.bookmarks.add(request.user)
             return Response("북마크 등록", status=status.HTTP_200_OK)
 
-        
+
 # 나의 북마크 리스트
 class MybookmarkView(APIView):
     permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request):
         user = request.user
         bookmarks = user.article_bookmarks.all()

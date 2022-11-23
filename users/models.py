@@ -24,10 +24,12 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     username = models.CharField(
-        verbose_name='username address',
+        verbose_name="username",
         max_length=255,
         unique=True,
     )
+    profile_img = models.CharField(max_length=255, blank=True)
+    bio = models.TextField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

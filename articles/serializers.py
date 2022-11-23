@@ -10,10 +10,10 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     def get_user(self, obj):
         return obj.user.username
-    
+
     def get_likes(self, obj):
         return obj.likes.count()
-    
+
     def get_bookmarks(self, obj):
         return obj.bookmarks.count()
 

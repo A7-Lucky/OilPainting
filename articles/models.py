@@ -13,11 +13,12 @@ class Article(models.Model):
     bookmarks = models.ManyToManyField(User, related_name="article_bookmarks")
 
     def __str__(self):
-        return str(f'{self.user} / {self.title}')
+        return str(f"{self.user} / {self.title}")
+
 
 class Comment(models.Model):
     user = models.ForeignKey(User, verbose_name="작성자", on_delete=models.CASCADE, related_name="comment_user")
-    article =  models.ForeignKey(Article, verbose_name="게시글", on_delete=models.CASCADE, related_name="comment_article")
+    article = models.ForeignKey(Article, verbose_name="게시글", on_delete=models.CASCADE, related_name="comment_article")
     comment = models.CharField(verbose_name="댓글", max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
