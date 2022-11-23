@@ -15,7 +15,7 @@ class Image(models.Model):
     output_img = models.ImageField("결과사진", upload_to="media/", null=True)
     
     def __str__(self):
-        return self.output_img
+        return f'{self.style}로 변환한 이미지 {self.output_img}'
 
 class Article(models.Model):
     user = models.ForeignKey(User, verbose_name="작성자", on_delete=models.CASCADE)

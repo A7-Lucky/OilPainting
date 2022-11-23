@@ -14,12 +14,13 @@ class ArticleView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
    
     def post(self, request):
-        data = request.data  
+        data = request.data
+        style_info = Style.objects.get(category=request.data["style"])
         output_img = inference(
-                filestr=request.FILES["input"].read(),
+                img_input=request.FILES["input"].read(), 
                 style=request.data.get("style", "") 
             )
-        image_info = Image.objects.create(output_img=output_img)
+        image_info = Image.objects.create(style=style_info, output_img=output_img)
         image_info.save()
 
         data = {

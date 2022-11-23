@@ -3,10 +3,10 @@ import cv2
 import numpy as np
 
 
-def inference(filestr, style):
+def inference(img_input, style):
     # 이미지 불러오기
-    npimg = np.fromstring(filestr, np.uint8)
-    input_img = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
+    npimg = np.fromstring(img_input, np.uint8)
+    input_img = cv2.imdecode(npimg, cv2.IMREAD_COLOR)  
     style = cv2.dnn.readNetFromTorch(f"articles/models/{style}")
     
     # 전처리 코드
