@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -8,24 +8,38 @@ class UserSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        user = super().create(validated_data)
-        password = user.password
-        user.set_password(password)
+        user = User(
+            username=validated_data["username"],
+        )
+        user.set_password(validated_data["password"])
         user.is_active = True
         user.save()
         return user
 
-    def update(self, instance, validated_data):
-        user = super().update(instance, validated_data)
-        password = user.password
-        user.set_password(password)
+    def update(self, validated_data):
+        user = User(
+            username=validated_data["username"],
+        )
+        user.set_password(validated_data["password"])
         user.save()
         return user
 
 
-class TokenObtainPairSerializer():
+class TokenObtainPairSerializer:
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        token['username'] = user.username
+        token["username"] = user.username
         return token
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("username", "bio", "profile_img")
+
+
+class ProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("bio", "profile_img")
