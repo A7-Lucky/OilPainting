@@ -1,10 +1,11 @@
 from django.db import models
 from users.models import User
+from django_resized import ResizedImageField
 
 
 class Article(models.Model):
     user = models.ForeignKey(User, verbose_name="작성자", on_delete=models.CASCADE)
-    image = models.CharField("결과사진", max_length=100)
+    image = ResizedImageField(size=[256, 256], upload_to="article", force_format="JPEG")
     title = models.CharField(verbose_name="제목", max_length=30)
     content = models.CharField(verbose_name="내용", max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)

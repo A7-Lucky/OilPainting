@@ -10,4 +10,5 @@ urlpatterns = [
     path("like/<int:article_id>/", views.LikeView.as_view(), name="like_view"),
     path("bookmark/<int:article_id>/", views.BookmarkView.as_view(), name="bookmark_view"),
     path("mybookmark/", views.MybookmarkView.as_view(), name="my_bookmark_view"),
+    path("myarticle/", views.MyarticleView.as_view(), name="my_article_view"),
 ]
