@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django_resized import ResizedImageField
 
 
 class UserManager(BaseUserManager):
@@ -28,7 +29,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    profile_img = models.CharField(max_length=255, blank=True)
+    profile_img = ResizedImageField(size=[128, 128], default="profile/default.jpeg", upload_to="profile", blank=True, force_format="JPEG")
     bio = models.TextField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
