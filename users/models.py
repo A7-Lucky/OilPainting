@@ -29,7 +29,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    profile_img = ResizedImageField(size=[300, 300], default="profile/default.jpg", upload_to="profile", blank=True, force_format='JPEG')
+    profile_img = ResizedImageField(size=[300, 300], default="profile/default.jpeg", upload_to="profile", blank=True, force_format='JPEG')
     bio = models.TextField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
