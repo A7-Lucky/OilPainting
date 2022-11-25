@@ -9,7 +9,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     bookmarks = serializers.SerializerMethodField()
 
     def get_user(self, obj):
-        return obj.user.username
+        return obj.user.email
 
     def get_likes(self, obj):
         return obj.likes.count()
@@ -38,7 +38,7 @@ class CommentSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
 
     def get_user(self, obj):
-        return obj.user.username
+        return obj.user.email
 
     class Meta:
         model = Comment

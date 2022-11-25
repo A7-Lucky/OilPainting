@@ -4,28 +4,28 @@ from django_resized import ResizedImageField
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password=None):
-        if not username:
-            raise ValueError("Users must have an username")
+    def create_user(self, email, password=None):
+        if not email:
+            raise ValueError("Users must have an email")
 
         user = self.model(
-            username=username,
+            email=self.normalize_email(email),
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, password=None):
-        user = self.create_user(username, password=password)
+    def create_superuser(self, email, password=None):
+        user = self.create_user(email, password=password)
         user.is_admin = True
         user.save(using=self._db)
         return user
 
 
 class User(AbstractBaseUser):
-    username = models.CharField(
-        verbose_name="username",
+    email = models.EmailField(
+        verbose_name="email address",
         max_length=255,
         unique=True,
     )
@@ -38,11 +38,11 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = "username"
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.username
+        return self.email
 
     def has_perm(self, perm, obj=None):
         return True

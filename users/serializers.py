@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User(
-            username=validated_data["username"],
+            email=validated_data["email"],
         )
         user.set_password(validated_data["password"])
         user.is_active = True
@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def update(self, validated_data):
         user = User(
-            username=validated_data["username"],
+            email=validated_data["email"],
         )
         user.set_password(validated_data["password"])
         user.save()
@@ -29,14 +29,14 @@ class TokenObtainPairSerializer:
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        token["username"] = user.username
+        token["email"] = user.email
         return token
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("username", "bio", "profile_img")
+        fields = ("email", "bio", "profile_img")
 
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
