@@ -1,16 +1,25 @@
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
+from rest_framework.pagination import PageNumberPagination
+from rest_framework import viewsets
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from articles.models import Article, Comment, Style, Image
 from articles.serializers import ArticleSerializer, CommentSerializer
 from articles.utils import inference
 
+class ArticlePagination(PageNumberPagination): # 👈 PageNumberPagination 상속
+    page_size = 2
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    pagination_class = ArticlePagination
+
 class ArticleView(APIView):
     def get(self, request):
         articles = Article.objects.all().order_by("created_at")
         serializer = ArticleSerializer(articles, many=True)
-
         return Response(serializer.data, status=status.HTTP_200_OK)
    
     def post(self, request):
