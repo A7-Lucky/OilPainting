@@ -55,14 +55,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
+    'corsheaders',
     'users',
     'articles',
-    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
+    'django_rest_passwordreset',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'allauth',
@@ -86,6 +87,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser'
     ]
+
 }
 
 MIDDLEWARE = [
