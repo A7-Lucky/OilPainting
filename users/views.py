@@ -7,7 +7,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 
-# 회원가입(테스트용)
+# 회원가입
 class UserView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -16,7 +16,7 @@ class UserView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
 
 # 비밀번호 변경
 class ChangePasswordView(generics.UpdateAPIView):
@@ -39,15 +39,8 @@ class ChangePasswordView(generics.UpdateAPIView):
             # set_password also hashes the password that the user will get
             self.object.set_password(serializer.data.get("new_password"))
             self.object.save()
-            response = {
-                'status': 'success',
-                'code': status.HTTP_200_OK,
-                'message': 'Password updated successfully',
-                'data': []
-            }
-
+            response = {"status": "success", "code": status.HTTP_200_OK, "message": "Password updated successfully", "data": []}
             return Response(response)
-
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

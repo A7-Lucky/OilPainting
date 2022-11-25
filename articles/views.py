@@ -23,7 +23,7 @@ class ArticleView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
 
 # 아티클 디테일 조회
 class ArticleDetailView(APIView):
@@ -132,5 +132,3 @@ class MyarticleView(APIView):
         articles = user.article_set.all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
