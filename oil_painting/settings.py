@@ -32,9 +32,6 @@ for key, value in secrets.items():
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-lnm@02r)t*3xk*(ifl44m@^do33)eka%xdl2&hk0d35=nntsh6'
-
 # .env
 env = environ.Env(
     DEBUG=(bool, False)
