@@ -17,7 +17,7 @@ import requests
 from json.decoder import JSONDecodeError
 from django.shortcuts import redirect
 
-
+# 회원가입 API
 class UserView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
