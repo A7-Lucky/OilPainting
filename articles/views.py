@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from articles.models import Article, Comment
 from articles.serializers import ArticleSerializer, ArticleCreateSerializer, CommentSerializer, CommentCreateSerializer
+from users.serializers import UserSerializer
 
 
 # 아티클 조회/등록(테스트용)
@@ -31,6 +32,15 @@ class ArticleDetailView(APIView):
     def get(self, request, article_id):
         article = get_object_or_404(Article, id=article_id)
         serializer = ArticleSerializer(article)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    
+# 아티클 유저 정보
+class ArticleUserView(APIView):
+    def get(self, request, article_id):
+        article = get_object_or_404(Article, id=article_id)
+        user = article.user
+        serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -122,3 +132,5 @@ class MyarticleView(APIView):
         articles = user.article_set.all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+

@@ -11,4 +11,6 @@ urlpatterns = [
     path("bookmark/<int:article_id>/", views.BookmarkView.as_view(), name="bookmark_view"),
     path("mybookmark/", views.MybookmarkView.as_view(), name="my_bookmark_view"),
     path("myarticle/", views.MyarticleView.as_view(), name="my_article_view"),
+
+    path("<article_id>/user/", views.ArticleUserView.as_view(), name="article_user_view"),
 ]
