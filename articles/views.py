@@ -34,7 +34,7 @@ class ArticleDetailView(APIView):
         serializer = ArticleSerializer(article)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    
+
 # 아티클 유저 정보
 class ArticleUserView(APIView):
     def get(self, request, article_id):

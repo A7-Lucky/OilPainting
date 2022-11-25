@@ -4,7 +4,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
-from users.models import User
+
+from .models import User
 
 
 class UserCreationForm(forms.ModelForm):
@@ -39,6 +40,7 @@ class UserChangeForm(forms.ModelForm):
 
 
 class UserAdmin(BaseUserAdmin):
+    # The forms to add and change user instances
     form = UserChangeForm
     add_form = UserCreationForm
 
