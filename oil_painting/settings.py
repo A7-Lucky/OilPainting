@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_rest_passwordreset',
     'corsheaders',
     'users',
     'articles',
@@ -201,3 +202,6 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+# 비밀번호 리셋시 터미널 창으로 메일(토큰) 받기
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

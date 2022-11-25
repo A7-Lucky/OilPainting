@@ -25,6 +25,13 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+# 비밀번호 변경
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+
 class TokenObtainPairSerializer:
     @classmethod
     def get_token(cls, user):
