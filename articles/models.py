@@ -13,7 +13,7 @@ class Style(models.Model):
 
 class Image(models.Model):
     style = models.ForeignKey(Style, verbose_name="스타일", on_delete=models.SET_NULL, null=True)
-    output_img = models.ImageField("결과사진", upload_to="media/", null=True)
+    output_img = models.ImageField("결과사진", upload_to="media/articles/", null=True)
     
     def __str__(self):
         return f'{self.style}로 변환한 이미지 {self.output_img}'

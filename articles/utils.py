@@ -1,6 +1,7 @@
 from datetime import datetime
 import cv2 
 import numpy as np
+import os
 
 
 def inference(img_input, style):
@@ -26,9 +27,14 @@ def inference(img_input, style):
     output = np.clip(output, 0, 255) 
     output = output.astype("uint8")
     
+    
+    # 폴더가 없을 시 생성
+    if not os.path.exists('media/articles'):
+        os.makedirs('media/articles')
+        
     # 생성시간을 이름으로 저장
     time = datetime.now().strftime("%y%m%d%H%M%S")
-    cv2.imwrite(f"media/{time}.jpeg", output) 
-    result = f"media/{time}.jpeg"
+    cv2.imwrite(f"media/articles/{time}.jpeg", output) 
+    result = f"media/articles/{time}.jpeg"
 
     return result
