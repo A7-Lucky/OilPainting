@@ -40,7 +40,6 @@ class ArticleView(APIView):
         image_info.save()
 
         data = {
-            "user" : request.user.id,
             "image" : output_img,
             "title" : request.data["title"],
             "content" : request.data["content"]
@@ -49,7 +48,7 @@ class ArticleView(APIView):
         article_serializer = ArticleSerializer(data=data)
 
         if article_serializer.is_valid():
-            article_serializer.save()
+            article_serializer.save(user=request.user)
             return Response(article_serializer.data, status=status.HTTP_200_OK)
         
         else:
