@@ -1,5 +1,20 @@
 from rest_framework import serializers
-from articles.models import Article, Comment
+from articles.models import Article, Comment, Style, Image
+
+class StyleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Style
+        fields = "__all__"
+        
+        
+class ImageSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+    
+    def get_user(self, obj):
+        return obj.user.username    
+    class Meta:
+        model = Image
+        fields = "__all__" 
 
 
 # 아티클 조회

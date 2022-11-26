@@ -234,4 +234,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/django,windows,visualstudiocode,venv
+# 카카오톡 소셜로그인 키
+secrets.json
+
+# End of https://www.toptal.com/developers/gitignore/api/python,windows,visualstudiocode,django
