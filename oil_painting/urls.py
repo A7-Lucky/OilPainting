@@ -7,6 +7,8 @@ urlpatterns = [
     # path('',),  # 초기 화면 구현 관련 정보 부족
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+    path('users/', include('dj_rest_auth.urls')),
+    path('users/', include('allauth.urls')),
     path('articles/', include('articles.urls')),
 ]
 
