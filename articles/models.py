@@ -20,7 +20,7 @@ class Image(models.Model):
 
 class Article(models.Model):
     user = models.ForeignKey(User, verbose_name="작성자", on_delete=models.CASCADE)
-    image = ResizedImageField(size=[256, 256], upload_to="article", force_format="JPEG")
+    image = models.CharField("결과사진", max_length=100)
     title = models.CharField(verbose_name="제목", max_length=30)
     content = models.CharField(verbose_name="내용", max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
