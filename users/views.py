@@ -27,6 +27,11 @@ class UserView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    def delete(self, request):
+        user = request.user
+        user.delete()
+        return Response({"message": "회원 탈퇴 완료!"}, status=status.HTTP_200_OK)
 
 
 # 비밀번호 변경
