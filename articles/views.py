@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from articles.models import Article, Comment, Style, Image
-from articles.serializers import ArticleSerializer, ArticleCreateSerializer, CommentSerializer, CommentCreateSerializer
+from articles.serializers import ArticleSerializer, CommentSerializer, CommentCreateSerializer
 from users.serializers import UserSerializer
 from articles.utils import inference
 

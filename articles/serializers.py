@@ -39,17 +39,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# 아티클 생성
-class ArticleCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Article
-        fields = (
-            "title",
-            "content",
-            "image",
-        )
-
-
 # 댓글 조회
 class CommentSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
