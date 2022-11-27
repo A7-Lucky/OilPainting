@@ -142,10 +142,10 @@ class LikeView(APIView):
         article = get_object_or_404(Article, id=article_id)
         if request.user in article.likes.all():
             article.likes.remove(request.user)
-            return Response("좋아요 취소", status=status.HTTP_200_OK)
+            return Response({"message":"좋아요 취소 완료!"}, status=status.HTTP_200_OK)
         else:
             article.likes.add(request.user)
-            return Response("좋아요!", status=status.HTTP_200_OK)
+            return Response({"message":"좋아요 등록 완료!"}, status=status.HTTP_200_OK)
 
 
 # 북마크 등록/취소
@@ -154,10 +154,10 @@ class BookmarkView(APIView):
         article = get_object_or_404(Article, id=article_id)
         if request.user in article.bookmarks.all():
             article.bookmarks.remove(request.user)
-            return Response("북마크 취소", status=status.HTTP_200_OK)
+            return Response({"message":"북마크 취소 완료!"}, status=status.HTTP_200_OK)
         else:
             article.bookmarks.add(request.user)
-            return Response("북마크 등록", status=status.HTTP_200_OK)
+            return Response({"message":"북마크 등록 완료!"}, status=status.HTTP_200_OK)
 
 
 # 나의 북마크 리스트
