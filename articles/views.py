@@ -11,7 +11,7 @@ from articles.utils import inference
 
 # 페이지네이션 적용(한 페이지당 게시물 수)
 class ArticlePagination(PageNumberPagination):  # 👈 PageNumberPagination 상속
-    page_size = 2
+    page_size = 3
 
 
 # 페이지네이션 클래스 상속받은 ArticleViewSet
