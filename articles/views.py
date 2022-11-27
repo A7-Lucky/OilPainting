@@ -16,7 +16,7 @@ class ArticlePagination(PageNumberPagination):  # 👈 PageNumberPagination 상�
 
 # 페이지네이션 클래스 상속받은 ArticleViewSet
 class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
+    queryset = Article.objects.all().order_by("-created_at")
     serializer_class = ArticleSerializer
     pagination_class = ArticlePagination
 
@@ -26,7 +26,7 @@ class ArticleView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request):
-        articles = Article.objects.all().order_by("created_at")
+        articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
