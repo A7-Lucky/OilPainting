@@ -133,7 +133,7 @@
 
 
 # 📋 ERD
-![image](https://user-images.githubusercontent.com/113072964/204168699-b8554a2a-67f3-4cd4-befc-8823118a9cbd.png)
+![image](https://user-images.githubusercontent.com/113072964/204171995-2f88934a-5570-4c23-bfe4-8581fd8895bd.png)
 
 
 # ❤️API 개발
