@@ -169,3 +169,4 @@
 
 
 # 🎞 시연 영상
+https://www.youtube.com/watch?v=kLHpZE6XWzY
