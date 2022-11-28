@@ -146,4 +146,26 @@
 ![image](https://user-images.githubusercontent.com/113072964/204169655-0949c691-d4e2-4b55-b06f-a8e8078cc8fd.png)
 
 
+# 🎯 Troubleshooting
+
+### 2022. 11 .23
+
+- 기존 회원가입 기능 자격인증데이터 에러
+    
+  - 원인 : UserModel Custom 후 [settings.py](http://settings.py)에 AUTH_USER_MODEL 변경을 적용하지 않음
+
+  - 해결 : [setting.py](http://setting.py)에  AUTH_USER_MODEL = users.User을 적용하여 해결
+![image](https://user-images.githubusercontent.com/113072964/204172422-f9aed9e2-c2e3-4c98-aaf3-d9e8279218c2.png)
+
+### 2022. 11. 26
+
+- `NOT NULL constraint failed: articles_article.user_id` 에러
+
+  - 원인 : 폼 데이터에 유저 id를 직접 넣었을시 적용되지 않는 문제
+![image](https://user-images.githubusercontent.com/113072964/204172487-31fa65c9-52bc-48ca-b709-bf4e6da868bf.png)
+
+  - 해결 : 아티클을 저장할때 (user=request.user)를 넣는 방법으로 해결
+![image](https://user-images.githubusercontent.com/113072964/204172518-f6a8e191-d79b-42ea-9ec8-ccc28bf52c5a.png)
+
+
 # 🎞 시연 영상
