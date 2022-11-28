@@ -1,7 +1,8 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=🍀Lucky-油畵(유화)🍀&fontSize=80)
 
 # ✨ 프로젝트 주제
-사용자의 이미지를 유화로 만들어 티셔츠, 휴대폰 케이스 등 사물을 커스텀 할 수 있도록 도와주는 서비스
+사용자의 이미지를 유화로 만들어 티셔츠, 휴대폰 케이스 등 사물을 커스텀 할 수 있도록 도와주는 서비스<br /><br />
+Front-end repository : https://github.com/A7-Lucky/OilPainting_Front
 
 # 🎁 기술 스택
 - Programming : <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"> <img src="https://img.shields.io/badge/HTML-blueviolet?style=for-the-badge&logo=HTML&logoColor=white"> <img src="https://img.shields.io/badge/CSS-sucess?style=for-the-badge&logo=CSS&logoColor=white">
