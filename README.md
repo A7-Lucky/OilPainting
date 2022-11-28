@@ -3,13 +3,13 @@
 # ✨ 프로젝트 주제
 사용자의 이미지를 유화로 만들어 티셔츠, 휴대폰 케이스 등 사물을 커스텀 할 수 있도록 도와주는 서비스
 
-# 기술 스택
+# 🎁 기술 스택
 - Programming : <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"> <img src="https://img.shields.io/badge/HTML-blueviolet?style=for-the-badge&logo=HTML&logoColor=white"> <img src="https://img.shields.io/badge/CSS-sucess?style=for-the-badge&logo=CSS&logoColor=white">
 - Framework : <img src="https://img.shields.io/badge/DjangoRestFramework-092E20?style=for-the-badge&logo=Django&logoColor=white"> 
 - Library : <img src="https://img.shields.io/badge/Tensorflow-F7931E?style=for-the-badge&logo=ScikitLearn&logoColor=white">
 
 
-# 팀원 소개
+# 👨‍👩‍👧‍👦 팀원 소개
 <table>
   <tr>
     <td align="center">
@@ -81,8 +81,10 @@
 - 마이페이지에서 본인이 생성한 이미지/게시글을 확인할 수 있는 기능을 추가해주세요.
 - 이미지 파일들은 EC2가 아닌 S3에 올려서 관리해주세요
 
+
 # 📋 와이어프레임
 ![image](https://user-images.githubusercontent.com/113072964/204168584-77754757-b28d-4d2d-85ac-1db8d60d37e5.png)
+
 
 # ⭐ 컨벤션
 ## 🍀Branch
@@ -129,15 +131,19 @@
 
 - 사진 설명 (사진 업로드)
 
+
 # 📋 ERD
 ![image](https://user-images.githubusercontent.com/113072964/204168699-b8554a2a-67f3-4cd4-befc-8823118a9cbd.png)
+
 
 # ❤️API 개발
 ![image](https://user-images.githubusercontent.com/113072964/204169089-377c21d4-f74e-4a96-b9d9-6384a7da1c94.png)
 ![image](https://user-images.githubusercontent.com/113072964/204169125-25b2b6b4-1e10-41f5-bdf7-ed9a9b4dcce7.png)
 ![image](https://user-images.githubusercontent.com/113072964/204169184-fcdfc9d4-21a8-4fa5-aa35-17f584ef1aed.png)
 
+
 # 📋 개발 일정
 ![image](https://user-images.githubusercontent.com/113072964/204169655-0949c691-d4e2-4b55-b06f-a8e8078cc8fd.png)
 
-# 시연 영상
+
+# 🎞 시연 영상
